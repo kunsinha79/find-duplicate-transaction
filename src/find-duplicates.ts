@@ -12,13 +12,13 @@ export function findDuplicateTransactions(transactions: Transaction[]): Transact
 
   const sortedRecords = <Transaction[]>transactions.sort( (a, b) => Number(a.id) -Number( b.id));
 
-    return sortedRecords.reduce((acc, record) => {
-      if(filteredRecords(sortedRecords, record).length > 1) {
-        
-        acc.push(record);
-      }
-      return acc;
-    }, []);
+  return sortedRecords.reduce((acc: Transaction[], record: Transaction) => {
+    if(filteredRecords(sortedRecords, record).length > 1) {
+      
+      acc.push(record);
+    }
+    return acc;
+  }, []);
 }
 
 /**
